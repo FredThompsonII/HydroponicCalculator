@@ -14,7 +14,7 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
 .card{background:#fff;border:1px solid #e5e5e3;border-radius:10px;overflow:hidden;margin-bottom:1.25rem}
 
 .t1-hdr{display:grid;grid-template-columns:130px 1fr 1fr 1fr;background:#f9f9f8;border-bottom:1px solid #e5e5e3}
-.t1-hdr span{font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.06em;padding:8px 10px}
+.t1-hdr span{font-size:11px;font-weight:600;color:#888;letter-spacing:.02em;padding:8px 10px}
 .t1-row{display:grid;grid-template-columns:130px 1fr 1fr 1fr;border-bottom:1px solid #e5e5e3;align-items:center}
 .t1-row:last-child{border-bottom:none}
 .t1-crop{padding:8px 10px;font-size:13px;font-weight:600;color:#1a1a1a;background:#f9f9f8;border-right:1px solid #e5e5e3;align-self:stretch;display:flex;align-items:center}
@@ -57,7 +57,7 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
 .mix-order strong{color:#777;font-weight:600}
 
 .t2-hdr{display:grid;grid-template-columns:2.2fr 1fr 1.1fr 1.1fr 1.4fr;background:#f9f9f8;border-bottom:1px solid #e5e5e3}
-.t2-hdr span{font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.06em;padding:8px 10px}
+.t2-hdr span{font-size:11px;font-weight:600;color:#888;letter-spacing:.02em;padding:8px 10px}
 .t2-row{display:grid;grid-template-columns:2.2fr 1fr 1.1fr 1.1fr 1.4fr;border-bottom:1px solid #e5e5e3;cursor:pointer;transition:background .1s}
 .t2-row:last-child{border-bottom:none}
 .t2-row:hover{background:#f5f5f3}
@@ -66,12 +66,16 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
 .tc{font-size:13px;color:#666;padding:7px 10px;display:flex;align-items:center}
 .tc-name{color:#1a1a1a}
 .tc-npk{font-size:13px;font-weight:600;color:#1a1a1a}
+.tc-flag{background:#fdecc8}
+.tc-qp{background:#fff3a3}
+.results-row.flag-orange .mc{background:#fdecc8}
+.results-row.flag-yellow .mc{background:#fff3a3}
 .t2-credit{font-size:11px;color:#aaa;text-align:right;padding:5px 10px;border-top:1px solid #e5e5e3;background:#f9f9f8}
 </style>
 </head>
 <body>
 <div class="wrap">
-<h1><a href="https://www.masterblend.com/4-18-38-tomato-formula/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Masterblend 4-18-38 Tomato Formula</a> Hydroponic Calculator&nbsp;&nbsp;&nbsp;<span style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.07em">v1.1</span></h1>
+<h1><a href="https://www.masterblend.com/4-18-38-tomato-formula/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Masterblend 4-18-38 Tomato Formula</a> Hydroponic Calculator&nbsp;&nbsp;&nbsp;<span style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.07em">v1.4</span></h1>
 
 <div class="sec">Crop stage presets — click any stage button to load</div>
 <div class="card">
@@ -83,9 +87,9 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
 
 <div class="card">
   <div class="npk-inputs">
-    <div class="npk-ig"><label class="lbl-n" for="cn">N — nitrogen (ppm)</label><input type="number" id="cn" value="90" min="0" step="5" oninput="onNpkEdit()"></div>
-    <div class="npk-ig"><label class="lbl-p" for="cp">P — phosphorus (ppm)</label><input type="number" id="cp" value="47" min="0" step="5" oninput="onNpkEdit()"></div>
-    <div class="npk-ig"><label class="lbl-k" for="ck">K — potassium (ppm)</label><input type="number" id="ck" value="144" min="0" step="5" oninput="onNpkEdit()"></div>
+    <div class="npk-ig"><label class="lbl-n" for="cn">N — Nitrogen (ppm)</label><input type="number" id="cn" value="90" min="0" step="5" oninput="onNpkEdit()"></div>
+    <div class="npk-ig"><label class="lbl-p" for="cp">P — Phosphorus (ppm)</label><input type="number" id="cp" value="47" min="0" step="5" oninput="onNpkEdit()"></div>
+    <div class="npk-ig"><label class="lbl-k" for="ck">K — Potassium (ppm)</label><input type="number" id="ck" value="144" min="0" step="5" oninput="onNpkEdit()"></div>
   </div>
   <p class="npk-hint">Values are target nutrient concentrations in ppm (mg/L), not a fertilizer-label ratio. Edit fields for a custom target, or click a stage button or table row to load a preset.</p>
 </div>
@@ -119,7 +123,7 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
 <div class="sec">Full crop reference — click any row to load NPK</div>
 <div class="card">
   <div class="t2-hdr">
-    <span>Vegetable</span><span>NPK</span><span>EC (mS/cm)</span><span>pH range</span><span>Light</span>
+    <span>Crop</span><span>NPK</span><span>EC (mS/cm)</span><span>pH Range</span><span>Light</span>
   </div>
   <div id="t2-body"></div>
 </div>
@@ -127,6 +131,8 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
 <div style="margin-top:1.25rem">
   <button onclick="var p=document.getElementById('about-panel');var btn=this;if(p.style.display==='none'){p.style.display='block';btn.style.borderColor='#3b7dd8';btn.style.color='#1a4fa0';btn.style.background='#eef4ff';}else{p.style.display='none';btn.style.borderColor='#ddd';btn.style.color='#555';btn.style.background='#fff';}" style="padding:6px 14px;border:1px solid #ddd;border-radius:6px;background:#fff;cursor:pointer;font-size:13px;color:#555;font-family:inherit;transition:all .1s">About this calculator</button>
   <div id="about-panel" style="display:none;margin-top:10px;padding:12px 14px;border:1px solid #e5e5e3;border-radius:8px;background:#f9f9f8;font-size:12px;color:#666;line-height:1.8">
+    <p style="margin:0 0 10px 0;color:#666">This calculator is primarily based on academic studies.</p>
+    <p style="margin:0 0 10px 0;color:#1a1a1a"><span style="background:#fdecc8;padding:2px 4px;border-radius:3px">Academic</span> <span style="background:#fff3a3;padding:2px 4px;border-radius:3px">data</span> <span style="background:#fdecc8;padding:2px 4px;border-radius:3px">needed</span> <span style="background:#fff3a3;padding:2px 4px;border-radius:3px">for</span> <span style="background:#fdecc8;padding:2px 4px;border-radius:3px">these</span> <span style="background:#fff3a3;padding:2px 4px;border-radius:3px">values</span></p>
     <strong style="color:#1a1a1a;display:block;margin-bottom:6px">Data gathered from:</strong>
     <a href="https://aero-gro.com/recommended-ec-and-ph-for-hydroponic-vegetables-herbs-and-cannabis/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Aero-Gro — Recommended EC and pH for Hydroponic Vegetables, Herbs, and Cannabis</a>
     <a href="https://www.aquagardening.com.au/learn/complete-ec-ph-levels-chart-hydroponic-plants/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Aqua Gardening — Complete EC &amp; pH Levels Chart for Hydroponic Plants</a>
@@ -136,9 +142,11 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
     <a href="http://hort.cornell.edu/greenhouse/crops/factsheets/hydroponic-recipes.pdf" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Cornell University — A Recipe for Hydroponic Success (Mattson, hydroponic-recipes.pdf)</a>
     <a href="https://www.drgreenthumbs.com.au/blogs/hydroponic-gardening/hydroponic-strawberry-nutrients-guide-2025-au" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Dr Green Thumbs — Hydroponic Strawberry Nutrients Guide 2025</a>
     <a href="https://earthone.io/plant/centella%20asiatica" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">EarthOne — How to Grow Centella asiatica (Gotu Kola)</a>
+    <p style="margin:0;display:block"><span style="background:#fdecc8;padding:2px 4px;border-radius:3px;color:#1a1a1a">Extrapolated estimate</span></p>
     <a href="https://farmtek.com.au/blogs/grow-better/grow-the-sweetest-juiciest-strawberries-ever-with-npk-fertilzers" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Farmtek Australia — NPK Fertilizers for Strawberries by Growth Stage</a>
     <a href="https://www.gardenvivid.com/8-essential-nutrients-for-thriving-hydroponic-strawberries/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Garden Vivid — 8 Essential Nutrients for Thriving Hydroponic Strawberries</a>
     <a href="https://greenridgehydroponics.com/electrical-conductivity-ec-ph-a-guide-for-hydroponic-vegetables/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Green Ridge Hydroponics — Electrical Conductivity &amp; pH Values for Hydroponic Vegetables</a>
+    <a href="https://documentserver.uhasselt.be/handle/1942/35913" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Hasselt University / SCK CEN (Van Dyck et al.) — Effects of Environmental Parameters on Lemna minor Growth</a>
     <a href="https://github.com/danielfppps/hydrobuddy" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">HydroBuddy (danielfppps) — Open Source Hydroponic Nutrient Solution Calculator</a>
     <a href="https://hydrohowto.com/ph-ec-hydroponic-vegetable/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">HydroHowTo — List of pH &amp; EC Levels for 65+ Hydroponic Vegetables &amp; Herbs</a>
     <a href="https://hydroponicadvice.com/guides/hydroponic-strawberries-us" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Hydroponic Advice — Hydroponic Strawberries Guide</a>
@@ -147,8 +155,11 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
     <a href="https://www.producegrower.com/article/hydroponic-herb-production-optimal-ph-controlled-environment-agriculture-cea/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Iowa State University (Kramer, Currey &amp; Boldt) — pH Optima: Determining the Optimal pH for Hydroponic Herb Production (via Produce Grower)</a>
     <a href="https://ishs.org/ishs-article/1315_78/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">ISHS — Effect of Different Nutrient Solution EC During Growth Stages on Fruit and Vegetative Characteristics of Strawberry in Hydroponic System</a>
     <a href="https://ishs.org/ishs-article/747_62/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">ISHS — Effects of Different Nutrient Solutions on Yield, Quality and Nutrient Consumption of Green Beans</a>
+    <a href="https://www.tandfonline.com/doi/full/10.1080/01904167.2012.636123" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Journal of Plant Nutrition (Egilla, Lincoln University) — Yield and Leaf Elemental Concentration of Beetroot in Response to Nutrient Solution Composition in Hydroponic Culture</a>
+    <a href="https://www.scielo.org.mx/scielo.php?script=sci_arttext&pid=S1027-152X2019000100017" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Juárez-Rosete, Aguilar-Castillo, Aburto-González &amp; Alejo-Santiago (2019), Revista Chapingo Serie Horticultura — Biomass Production, Nutritional Requirement of N, P and K, and Concentration of the Nutrient Solution in Oregano</a>
     <a href="https://leavesandsoul.com/blogs/news/the-best-fertilizer-for-herbs-you-re-growing-indoors" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Leaves and Soul — Best Fertilizer for Indoor Herbs</a>
     <a href="https://letpot.com/blogs/hydroponics-system-knowledge-and-tips/hydroponic-herbs-a-beginners-top-10-list" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">LetPot — Hydroponic Herbs: A Beginner's Top 10 List</a>
+    <a href="https://www.mdpi.com/2073-4395/15/1/111" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">MDPI Agronomy (Chrysargyris &amp; Tzortzakis) — Nitrogen, Phosphorus, and Potassium Requirements to Improve Portulaca oleracea L. Growth in Hydroponics</a>
     <a href="https://www.mdpi.com/2073-4395/9/8/433" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">MDPI Agronomy — Selection of Fertilizer and Cultivar of Sweet Pepper and Eggplant for Hydroponic Production</a>
     <a href="https://extension.missouri.edu/publications/g6984" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Missouri University Extension — Hydroponic Nutrient Solutions (G6984)</a>
     <a href="https://ohioline.osu.edu/factsheet/hyg-1437" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Ohio State University Extension — Hydroponic Nutrient Solution for Optimized Greenhouse Tomato Production (HYG-1437, Jensen/UA-CEA recipe)</a>
@@ -157,7 +168,7 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
     <a href="https://www.producegrower.com/article/edible-crop-species-differ-in-their-ph-effect-in-hydroponics/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Produce Grower — Edible Crop Species Differ in Their pH Effect in Hydroponics</a>
     <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10661198/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">PubMed Central — Peer-reviewed hydroponic research (Purslane, Duckweed, Gotu Kola, Strawberry)</a>
     <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11860082/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">PubMed Central — Substrate System Outperforms Water-Culture Systems for Hydroponic Strawberry Production</a>
-    <a href="https://www.qpseedlings.com.au/blogs/news/optimal-npk-ratios-electrical-conductivity-ec-and-ph-levels-for-growing-vegetables" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">QP Seedlings — Optimal NPK Ratios, Electrical Conductivity (EC) and pH Levels for Growing Vegetables</a>
+    <a href="https://www.qpseedlings.com.au/blogs/news/optimal-npk-ratios-electrical-conductivity-ec-and-ph-levels-for-growing-vegetables" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block"><span style="background:#fff3a3;padding:2px 4px;border-radius:3px">QP Seedlings — Optimal NPK Ratios, Electrical Conductivity (EC) and pH Levels for Growing Vegetables</span> (initial design inspiration)</a>
     <a href="https://www.qpseedlings.com.au/blogs/news/understanding-electrical-conductivity-ec-in-hydroponics-a-guide-to-optimal-growth-for-vegetables-and-fruits" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">QP Seedlings — Understanding Electrical Conductivity (EC) in Hydroponics</a>
     <a href="https://scienceinhydroponics.com/2025/10/comparing-nutrient-solutions-for-hydroponic-tomatoes-what-the-research-says.html" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Science in Hydroponics — Comparing Nutrient Solutions for Hydroponic Tomatoes: What the Research Says</a>
     <a href="https://www.selfsufficientculture.com/threads/ph-and-ec-reference-for-plants-and-hydroponic.3678/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Self Sufficient Culture — pH and EC Reference for Hydroponic Plants and Herbs</a>
@@ -165,6 +176,8 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
     <a href="https://shershegrows.com/hydroponic-ph-and-ec-guide/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Shershegrows — Mastering Nutrients: A Simple Guide to pH and EC in Hydroponics</a>
     <a href="https://www.greeneryretail.com/post/suitable-ph-tds-and-ec-levels-for-specific-vegetables" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">The Greenery Retail — Suitable pH, TDS, and EC Levels for Specific Vegetables</a>
     <a href="https://www.negreenhouse.org/uploads/9/4/8/2/94821076/dickson_2018_negc_nutrient_and_ph_for_hydroponics.pdf" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">University of Arkansas (Ryan Dickson, Ph.D.) — Managing Nutrient Solutions for Hydroponic Crops</a>
+    <strong style="color:#1a1a1a;display:block;margin-top:14px;margin-bottom:6px">Thanks:</strong>
+    <a href="https://www.reddit.com/user/Saison05/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Saison05</a>
     <p style="margin-top:10px;margin-bottom:0;font-size:12px;color:#666;line-height:1.7">All reasonable efforts have been made to ensure the accuracy of the information, however, Fred Thompson does not warrant the accuracy and reserves the right to change website content and site functions at any time without notice.</p>
   </div>
 </div>
@@ -173,9 +186,17 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
   Copyright 2026 Fred Thompson<br>
   Free use granted, including embedding this code in any web page or product, as long as there are no modifications and the donation button(s) remain.
 </p>
-<p style="margin-top:0.75rem">
-  <a href="https://ko-fi.com/frugalfreddy" target="_blank" rel="noopener">
-    <img src="https://storage.ko-fi.com/cdn/kofi2.png?v=3" alt="Buy Me a Coffee at ko-fi.com" style="height:36px;border:0;">
+<p style="margin-top:0.75rem;display:flex;align-items:center;gap:8px">
+  <a href="https://ko-fi.com/frugalfreddy" target="_blank" rel="noopener" style="display:flex;align-items:center">
+    <img src="https://storage.ko-fi.com/cdn/kofi2.png?v=3" alt="Buy Me a Coffee at ko-fi.com" style="height:36px;border:0;display:block">
+  </a>
+  <a href="https://github.com/FredThompsonII?tab=repositories" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:6px;height:36px;box-sizing:border-box;padding:0 14px;background:#24292e;border-radius:6px;text-decoration:none">
+    <svg height="18" width="18" viewBox="0 0 16 16" fill="#ffffff" aria-hidden="true" style="display:block;flex-shrink:0"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+    <span style="color:#ffffff;font-size:13px;font-weight:600;font-family:inherit;line-height:1;display:block">GitHub</span>
+  </a>
+  <a href="https://www.reddit.com/r/Hydroponics/comments/1ub5bqn/new_masterblend_41838_tomato_formula_hydroponic/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:6px;height:36px;box-sizing:border-box;padding:0 14px;background:#FF4500;border-radius:6px;text-decoration:none">
+    <svg height="18" width="18" viewBox="0 0 20 20" fill="#ffffff" aria-hidden="true" style="display:block;flex-shrink:0"><path d="M10 0C4.477 0 0 4.477 0 10c0 2.61.99 4.99 2.62 6.79-.18.66-.62 2.27-.79 2.91-.21.8.29 1.32 1.06 1.04.65-.23 2.05-.74 2.81-1.01A9.96 9.96 0 0 0 10 20c5.523 0 10-4.477 10-10S15.523 0 10 0Zm5.5 9.5a1.5 1.5 0 0 1-2.39 1.21c-.6.43-1.36.77-2.2.95l.5-2.36 1.65.35a1 1 0 1 0 .12-.6l-1.85-.39a.3.3 0 0 0-.36.23l-.56 2.66c-.85-.05-1.65-.27-2.32-.62a1.5 1.5 0 1 1-2.21-1.51A1.5 1.5 0 0 1 7.5 8a1.5 1.5 0 0 1 1.43 1.06c.6-.27 1.29-.43 2.03-.46l.93-2.6a.25.25 0 0 1 .29-.16l2 .42a1 1 0 1 1-.1.6l-1.7-.36-.78 2.18c.65.04 1.25.18 1.78.4A1.5 1.5 0 0 1 15.5 9.5ZM8 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm4 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-3.97 1.5c.55.41 1.27.66 2.07.66.79 0 1.5-.24 2.05-.64a.3.3 0 0 0-.35-.49c-.45.32-1.04.51-1.7.51-.67 0-1.27-.2-1.72-.53a.3.3 0 0 0-.35.49Z"/></svg>
+    <span style="color:#ffffff;font-size:13px;font-weight:600;font-family:inherit;line-height:1;display:block">Reddit</span>
   </a>
 </p>
 </div>
@@ -240,53 +261,53 @@ const T1=[
 ];
 
 const T2_QPS=[
-  {e:'🌿',v:'Arugula',       npk:'140-29-196 ppm',ec:'0.8–1.6',ph:'5.7–6.0',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Basil',         npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'4.5–6.5',light:'☀️ Full Sun'},
-  {e:'🍠',v:'Beet',          npk:'10-5-20', ec:'1.6–2.5',ph:'6.0–6.5',light:'☀️ Full Sun'},
-  {e:'🥬',v:'Bok Choy',      npk:'175-36-245 ppm',ec:'1.5–2.0',ph:'7.0',light:'🌤️ Partial Shade'},
-  {e:'🥦',v:'Broccoli',      npk:'175-36-245 ppm',ec:'2.8–3.5',ph:'6.0–6.8',light:'☀️ Full Sun'},
-  {e:'🥦',v:'Brussel Sprouts',npk:'175-36-245 ppm',ec:'2.5–3.0',ph:'6.0–6.8',light:'☀️ Full Sun'},
-  {e:'🥬',v:'Cabbage',       npk:'200-41-280 ppm',ec:'2.5–3.0',ph:'6.5–7.0',light:'☀️ Full Sun'},
-  {e:'🥕',v:'Carrot',        npk:'4-14-14', ec:'1.6–2.0',ph:'5.8–6.4',light:'🌤️ Partial Sun'},
-  {e:'🌼',v:'Cauliflower',   npk:'175-36-245 ppm',ec:'0.5–2.0',ph:'6.0–6.8',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Celery',        npk:'175-36-245 ppm',ec:'1.8–2.4',ph:'6.5',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Chives',        npk:'150-31-210 ppm',ec:'1.8–2.4',ph:'6.0–6.5',light:'🌤️ Partial Sun'},
-  {e:'🌿',v:'Cilantro',      npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'5.5–6.5',light:'🌤️ Partial Sun'},
-  {e:'🌿',v:'Collard Greens',npk:'175-36-245 ppm',ec:'1.5–2.0',ph:'6.0–6.8',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Dill',          npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'5.0–6.0',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Duckweed',      npk:'5-5-5',   ec:'0.5–1.0',ph:'6.5–7.5',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Endive',        npk:'175-36-245 ppm',ec:'1.0–1.8',ph:'5.5–6.5',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Fennel',        npk:'150-31-210 ppm',ec:'1.0–1.4',ph:'6.4–6.8',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Gotu Kola',     npk:'10-10-10',ec:'1.0–1.8',ph:'6.0–7.0',light:'🌤️ Partial Shade'},
-  {e:'🌱',v:'Green Beans',   npk:'35-20-83 ppm', ec:'2.0–4.0',ph:'6.0–6.0',light:'☀️ Full Sun'},
-  {e:'🥦',v:'Kale',          npk:'200-41-280 ppm',ec:'1.5–2.0',ph:'6.0–7.0',light:'🌤️ Partial Shade'},
-  {e:'🥔',v:'Leek',          npk:'150-31-210 ppm',ec:'1.4–1.8',ph:'6.5–7.0',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Lemon Balm',    npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'5.5–6.5',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Mint',          npk:'150-31-210 ppm',ec:'2.0–2.4',ph:'5.5–6.0',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Mustard Greens',npk:'200-41-280 ppm',ec:'1.2–2.4',ph:'5.5–6.8',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Okra',          npk:'5-8-15',  ec:'2.0–2.4',ph:'6.5',light:'☀️ Full Sun'},
-  {e:'🧅',v:'Onion',         npk:'150-31-210 ppm',ec:'1.4–1.8',ph:'6.0–6.5',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Oregano',       npk:'3-5-8',   ec:'1.0–1.6',ph:'5.5–6.5',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Parsley',       npk:'150-31-210 ppm',ec:'1.8–2.2',ph:'5.0–6.0',light:'🌤️ Partial Shade'},
-  {e:'🥕',v:'Parsnip',       npk:'4-14-14', ec:'1.4–1.8',ph:'5.5–6.5',light:'🌤️ Partial Sun'},
-  {e:'🥒',v:'Peas',          npk:'5-10-10', ec:'0.8–1.8',ph:'6.0–7.0',light:'🌤️ Partial Sun'},
-  {e:'🎃',v:'Pumpkin',       npk:'5-10-25', ec:'1.8–2.4',ph:'5.8–6.5',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Purslane',      npk:'10-5-10', ec:'1.6–2.4',ph:'5.5–6.5',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Radicchio',     npk:'140-29-196 ppm',ec:'1.0–1.6',ph:'6.0–6.5',light:'🌤️ Partial Shade'},
-  {e:'🌶️',v:'Radish',        npk:'4-14-14', ec:'1.6–2.2',ph:'5.5–6.5',light:'🌤️ Partial Sun'},
-  {e:'🌿',v:'Rosemary',      npk:'3-5-8',   ec:'1.0–1.6',ph:'5.5–6.0',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Sage',          npk:'3-5-8',   ec:'1.0–1.6',ph:'5.5–6.5',light:'☀️ Full Sun'},
-  {e:'🥗',v:'Spinach',       npk:'200-41-280 ppm',ec:'1.8–2.3',ph:'6.0–7.0',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Swiss Chard',   npk:'200-41-280 ppm',ec:'1.5–2.5',ph:'6.0–7.5',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Tarragon',      npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'5.5–6.5',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Thyme',         npk:'3-5-8',   ec:'0.8–1.6',ph:'5.5–7.0',light:'☀️ Full Sun'},
-  {e:'🥕',v:'Turnip',        npk:'4-14-14', ec:'1.8–2.4',ph:'5.5–6.5',light:'🌤️ Partial Sun'},
-  {e:'🌿',v:'Watercress',    npk:'125-26-175 ppm',ec:'0.4–1.8',ph:'6.5–6.8',light:'🌤️ Partial Shade'},
-  {e:'🎃',v:'Zucchini',      npk:'5-15-10', ec:'1.8–2.4',ph:'5.8–6.5',light:'☀️ Full Sun'},
+  {e:'🌿',v:'Arugula',       npk:'140-29-196 ppm',ec:'0.8–1.6',ph:'5.7–6.0',light:'🌤️ Partial Shade',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌿',v:'Basil',         npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'4.5–6.5',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🍠',v:'Beet',          npk:'10-5-20', ec:'1.6–2.5',ph:'6.0–6.5',light:'☀️ Full Sun',ev:false,qpNpk:false,qpEc:true},
+  {e:'🥬',v:'Bok Choy',      npk:'175-36-245 ppm',ec:'1.5–2.0',ph:'7.0',light:'🌤️ Partial Shade',ev:true,qpNpk:false,qpEc:false},
+  {e:'🥦',v:'Broccoli',      npk:'175-36-245 ppm',ec:'2.8–3.5',ph:'6.0–6.8',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🥦',v:'Brussel Sprouts',npk:'175-36-245 ppm',ec:'2.5–3.0',ph:'6.0–6.8',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🥬',v:'Cabbage',       npk:'200-41-280 ppm',ec:'2.5–3.0',ph:'6.5–7.0',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🥕',v:'Carrot',        npk:'4-14-14', ec:'1.6–2.0',ph:'5.8–6.4',light:'🌤️ Partial Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌼',v:'Cauliflower',   npk:'175-36-245 ppm',ec:'0.5–2.0',ph:'6.0–6.8',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌿',v:'Celery',        npk:'175-36-245 ppm',ec:'1.8–2.4',ph:'6.5',light:'🌤️ Partial Shade',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌿',v:'Chives',        npk:'150-31-210 ppm',ec:'1.8–2.4',ph:'6.0–6.5',light:'🌤️ Partial Sun',ev:false,qpNpk:false,qpEc:true},
+  {e:'🌿',v:'Cilantro',      npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'5.5–6.5',light:'🌤️ Partial Sun',ev:false,qpNpk:false,qpEc:true},
+  {e:'🌿',v:'Collard Greens',npk:'175-36-245 ppm',ec:'1.5–2.0',ph:'6.0–6.8',light:'☀️ Full Sun',ev:false,qpNpk:false,qpEc:true},
+  {e:'🌿',v:'Dill',          npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'5.0–6.0',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌿',v:'Duckweed',      npk:'24-3-25 ppm', ec:'0.5–1.0',ph:'6.5–7.5',light:'🌤️ Partial Shade',ev:false,qpNpk:false,qpEc:true},
+  {e:'🌿',v:'Endive',        npk:'175-36-245 ppm',ec:'1.0–1.8',ph:'5.5–6.5',light:'🌤️ Partial Shade',ev:false,qpNpk:false,qpEc:true},
+  {e:'🌿',v:'Fennel',        npk:'150-31-210 ppm',ec:'1.0–1.4',ph:'6.4–6.8',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌿',v:'Gotu Kola',     npk:'210-31-234 ppm',ec:'0.8–1.0',ph:'5.4–5.8',light:'🌤️ Partial Shade',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌱',v:'Green Beans',   npk:'35-20-83 ppm', ec:'2.0–4.0',ph:'6.0–6.0',light:'☀️ Full Sun',ev:false,qpNpk:false,qpEc:true},
+  {e:'🥦',v:'Kale',          npk:'200-41-280 ppm',ec:'1.5–2.0',ph:'6.0–7.0',light:'🌤️ Partial Shade',ev:true,qpNpk:false,qpEc:false},
+  {e:'🥔',v:'Leek',          npk:'150-31-210 ppm',ec:'1.4–1.8',ph:'6.5–7.0',light:'☀️ Full Sun',ev:false,qpNpk:false,qpEc:true},
+  {e:'🌿',v:'Lemon Balm',    npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'5.5–6.5',light:'🌤️ Partial Shade',ev:false,qpNpk:false,qpEc:true},
+  {e:'🌿',v:'Mint',          npk:'150-31-210 ppm',ec:'2.0–2.4',ph:'5.5–6.0',light:'🌤️ Partial Shade',ev:false,qpNpk:false,qpEc:true},
+  {e:'🌿',v:'Mustard Greens',npk:'200-41-280 ppm',ec:'1.2–2.4',ph:'5.5–6.8',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌿',v:'Okra',          npk:'5-8-15',  ec:'2.0–2.4',ph:'6.5',light:'☀️ Full Sun',ev:true,qpNpk:true,qpEc:false},
+  {e:'🧅',v:'Onion',         npk:'150-31-210 ppm',ec:'1.4–1.8',ph:'6.0–6.5',light:'☀️ Full Sun',ev:false,qpNpk:false,qpEc:true},
+  {e:'🌿',v:'Oregano',       npk:'84-15-137 ppm',ec:'1.0',ph:'5.5–6.0',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌿',v:'Parsley',       npk:'150-31-210 ppm',ec:'1.8–2.2',ph:'5.0–6.0',light:'🌤️ Partial Shade',ev:true,qpNpk:false,qpEc:false},
+  {e:'🥕',v:'Parsnip',       npk:'4-14-14', ec:'1.4–1.8',ph:'5.5–6.5',light:'🌤️ Partial Sun',ev:false,qpNpk:false,qpEc:true},
+  {e:'🥒',v:'Peas',          npk:'5-10-10', ec:'0.8–1.8',ph:'6.0–7.0',light:'🌤️ Partial Sun',ev:true,qpNpk:true,qpEc:false},
+  {e:'🎃',v:'Pumpkin',       npk:'150-45-270 ppm', ec:'1.8–2.4',ph:'5.8–6.5',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌿',v:'Purslane',      npk:'200-70-350 ppm', ec:'1.6–2.4',ph:'5.5–6.5',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌿',v:'Radicchio',     npk:'140-29-196 ppm',ec:'1.0–1.6',ph:'6.0–6.5',light:'🌤️ Partial Shade',ev:false,qpNpk:false,qpEc:true},
+  {e:'🌶️',v:'Radish',        npk:'4-14-14', ec:'1.6–2.2',ph:'5.5–6.5',light:'🌤️ Partial Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌿',v:'Rosemary',      npk:'3-5-8',   ec:'1.0–1.6',ph:'5.5–6.0',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌿',v:'Sage',          npk:'3-5-8',   ec:'1.0–1.6',ph:'5.5–6.5',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🥗',v:'Spinach',       npk:'200-41-280 ppm',ec:'1.8–2.3',ph:'6.0–7.0',light:'🌤️ Partial Shade',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌿',v:'Swiss Chard',   npk:'200-41-280 ppm',ec:'1.5–2.5',ph:'6.0–7.5',light:'🌤️ Partial Shade',ev:true,qpNpk:false,qpEc:false},
+  {e:'🌿',v:'Tarragon',      npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'5.5–6.5',light:'🌤️ Partial Shade',ev:false,qpNpk:false,qpEc:true},
+  {e:'🌿',v:'Thyme',         npk:'3-5-8',   ec:'0.8–1.6',ph:'5.5–7.0',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
+  {e:'🥕',v:'Turnip',        npk:'4-14-14', ec:'1.8–2.4',ph:'5.5–6.5',light:'🌤️ Partial Sun',ev:false,qpNpk:false,qpEc:true},
+  {e:'🌿',v:'Watercress',    npk:'125-26-175 ppm',ec:'0.4–1.8',ph:'6.5–6.8',light:'🌤️ Partial Shade',ev:false,qpNpk:false,qpEc:true},
+  {e:'🎃',v:'Zucchini',      npk:'130-45-210 ppm', ec:'1.8–2.4',ph:'5.8–6.5',light:'☀️ Full Sun',ev:true,qpNpk:false,qpEc:false},
 ];
 
 const COLORS=['#185FA5','#3B6D11','#BA7517'];
-let activeT1Key=null,activeT1Col=null,activeT2Idx=null;
+let activeT1Key=null,activeT1Col=null,activeT2Idx=null,activeT2Flag=null;
 let ALL_T2=[];
 
 function parseNpk(s){const clean=s.replace(/\s*ppm\s*$/i,'');const p=clean.split('-').map(Number);return{n:p[0]||0,p:p[1]||0,k:p[2]||0};}
@@ -294,7 +315,7 @@ function parseNpk(s){const clean=s.replace(/\s*ppm\s*$/i,'');const p=clean.split
 function clearAll(){
   document.querySelectorAll('.stage-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.t2-row').forEach(r=>r.classList.remove('active'));
-  activeT1Key=null;activeT1Col=null;activeT2Idx=null;
+  activeT1Key=null;activeT1Col=null;activeT2Idx=null;activeT2Flag=null;
 }
 
 function getStageByCol(crop,col){
@@ -325,6 +346,27 @@ function setT2(idx){
   document.getElementById('t2r-'+idx).classList.add('active');
   const r=ALL_T2[idx];
   const npk=parseNpk(r.npk);
+  const isRatio=!/ppm/i.test(r.npk);
+  if(isRatio){
+    // Ratio-only NPK has no inherent ppm magnitude. Scale it using the EC
+    // midpoint for this crop: EC(mS/cm) × 700 approximates the TOTAL dissolved
+    // ionic strength of a full nutrient solution (N+P+K+Ca+Mg+S+micros), not
+    // NPK alone. Cross-checking every validated ppm recipe already in this
+    // calculator (Tomato, Cucumber, Strawberry, etc.) shows N+P+K consistently
+    // accounts for only ~18-25% (≈22% average) of that EC-implied total —
+    // the rest is Ca, Mg, S, and micronutrients this calculator doesn't model
+    // separately. Applying that calibration avoids overstating NPK ppm.
+    const ecNums=(r.ec.match(/[\d.]+/g)||[]).map(Number);
+    const ecMid=ecNums.length===2 ? (ecNums[0]+ecNums[1])/2 : (ecNums[0]||0);
+    const NPK_SHARE_OF_EC=0.22;
+    const totalPpm=ecMid*700*NPK_SHARE_OF_EC;
+    const ratioSum=npk.n+npk.p+npk.k;
+    if(ratioSum>0){
+      npk.n=Math.round(totalPpm*npk.n/ratioSum);
+      npk.p=Math.round(totalPpm*npk.p/ratioSum);
+      npk.k=Math.round(totalPpm*npk.k/ratioSum);
+    }
+  }
   document.getElementById('cn').value=npk.n;
   document.getElementById('cp').value=npk.p;
   document.getElementById('ck').value=npk.k;
@@ -333,6 +375,7 @@ function setT2(idx){
     const btn=document.getElementById('sb-'+r._key+'-'+r._col);
     if(btn) btn.classList.add('active');
   }
+  activeT2Flag=(r.qpNpk||isRatio)?'orange':(r.qpEc?'yellow':null);
   calc();
 }
 
@@ -413,12 +456,13 @@ function calc(){
     es_g = EPSOM_MG>0 ? (mgNeededPpm*liters)/(EPSOM_MG*1000) : 0;
   }
 
+  document.getElementById('results').className='results-row'+(activeT2Flag?' flag-'+activeT2Flag:'');
   document.getElementById('results').innerHTML=[
     {l:'Masterblend<br>Tomato 4-18-38',    v:fmt(tf_g), u:'g'},
-    {l:'Epsom Salt<br>&nbsp;',     v:fmt(es_g), u:'g'},
-    {l:'Calcium Nitrate<br>&nbsp;',v:fmt(cn_g), u:'g'},
     {l:'MiracleGro Bloom<br>Booster 15-30-15',  v:fmt(mg_g), u:'g'},
     {l:'Sulphate of<br>Potash',v:fmt(sop_g),u:'g'},
+    {l:'Epsom Salt<br>&nbsp;',     v:fmt(es_g), u:'g'},
+    {l:'Calcium Nitrate<br>&nbsp;',v:fmt(cn_g), u:'g'},
     {l:'EC Target<br>&nbsp;',      v:ecStr,   u:'mS/cm'},
     {l:'pH Range<br>&nbsp;',       v:phStr,   u:''}
   ].map(c=>`<div class="mc"><div class="mc-lbl">${c.l}</div><div class="mc-val">${c.v}<span class="mc-unit">${c.u}</span></div></div>`).join('');
@@ -448,7 +492,7 @@ function buildT1(){
     const cols=[crop.veg,crop.flo,crop.fru];
     const cells=cols.map((st,i)=>{
       if(!st||!st.npk) return `<div class="t1-cell"><span class="stage-btn na">—</span></div>`;
-      return `<div class="t1-cell"><button class="stage-btn" id="sb-${crop.key}-${i}" onclick="setT1('${crop.key}',${i})">${st.npk[0]}-${st.npk[1]}-${st.npk[2]}</button></div>`;
+      return `<div class="t1-cell"><button class="stage-btn" id="sb-${crop.key}-${i}" onclick="setT1('${crop.key}',${i})">${st.npk[0]}-${st.npk[1]}-${st.npk[2]} ppm</button></div>`;
     }).join('');
     return `<div class="t1-row"><div class="t1-crop">${crop.e} ${crop.name}</div>${cells}</div>`;
   }).join('');
@@ -465,7 +509,7 @@ function buildT2(){
         e:crop.e,
         v:`${crop.name} (${st.s})`,
         npk:`${st.npk[0]}-${st.npk[1]}-${st.npk[2]} ppm`,
-        ec:st.ec,ph:crop.ph,light:crop.light,
+        ec:st.ec,ph:crop.ph,light:crop.light,ev:true,
         _key:crop.key,_col:col,
         _sort:`${crop.name} ${col}`
       });
@@ -474,14 +518,18 @@ function buildT2(){
   T2_QPS.forEach(r=>rows.push({...r,_sort:r.v}));
   rows.sort((a,b)=>a._sort.localeCompare(b._sort));
   ALL_T2=rows;
-  document.getElementById('t2-body').innerHTML=ALL_T2.map((r,i)=>
-    `<div class="t2-row" id="t2r-${i}" onclick="setT2(${i})">
+  document.getElementById('t2-body').innerHTML=ALL_T2.map((r,i)=>{
+    const npkIsRatio=!/ppm/i.test(r.npk);
+    const npkClass=r.qpNpk?' tc-qp':(npkIsRatio?' tc-flag':'');
+    const ecphClass=r.qpEc?' tc-qp':(!r.ev?' tc-flag':'');
+    return `<div class="t2-row" id="t2r-${i}" onclick="setT2(${i})">
       <span class="tc tc-name">${r.e} ${r.v}</span>
-      <span class="tc tc-npk">${r.npk}</span>
-      <span class="tc">${r.ec}</span>
-      <span class="tc">${r.ph}</span>
+      <span class="tc tc-npk${npkClass}">${r.npk}</span>
+      <span class="tc${ecphClass}">${r.ec}</span>
+      <span class="tc${ecphClass}">${r.ph}</span>
       <span class="tc">${r.light}</span>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 buildT1();buildT2();calc();
