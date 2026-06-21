@@ -38,11 +38,11 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
 .ig input,.ig select{width:100%;padding:7px 10px;border:1px solid #ddd;border-radius:6px;font-size:14px;font-family:inherit;color:#1a1a1a;background:#fff}
 .ig input:focus,.ig select:focus{outline:none;border-color:#3b7dd8;box-shadow:0 0 0 3px rgba(59,125,216,.12)}
 
-.results-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:1.25rem}
-.mc{background:#f9f9f8;border:1px solid #e5e5e3;border-radius:8px;padding:12px 14px}
-.mc-lbl{font-size:11px;color:#888;margin-bottom:4px;font-weight:500}
-.mc-val{font-size:18px;font-weight:700;color:#1a1a1a}
-.mc-unit{font-size:11px;color:#888;margin-left:2px;font-weight:400}
+.results-row{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:1.25rem}
+.mc{background:#f9f9f8;border:1px solid #e5e5e3;border-radius:8px;padding:9px 8px;min-width:0}
+.mc-lbl{font-size:10px;color:#888;margin-bottom:4px;font-weight:500;line-height:1.3}
+.mc-val{font-size:15px;font-weight:700;color:#1a1a1a;word-break:break-word}
+.mc-unit{font-size:10px;color:#888;margin-left:2px;font-weight:400}
 
 .bar-wrap{margin-bottom:1.25rem}
 .npk-bar{display:flex;height:22px;border-radius:8px;overflow:hidden;margin-top:6px}
@@ -71,7 +71,7 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
 </head>
 <body>
 <div class="wrap">
-<h1><a href="https://www.masterblend.com/4-18-38-tomato-formula/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Masterblend 4-18-38 Tomato Formula</a> Hydroponic Calculator&nbsp;&nbsp;&nbsp;<span style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.07em">v1.0</span></h1>
+<h1><a href="https://www.masterblend.com/4-18-38-tomato-formula/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Masterblend 4-18-38 Tomato Formula</a> Hydroponic Calculator&nbsp;&nbsp;&nbsp;<span style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.07em">v1.1</span></h1>
 
 <div class="sec">Crop stage presets — click any stage button to load</div>
 <div class="card">
@@ -83,11 +83,11 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
 
 <div class="card">
   <div class="npk-inputs">
-    <div class="npk-ig"><label class="lbl-n" for="cn">N — nitrogen</label><input type="number" id="cn" value="10" min="0" step="1" oninput="onNpkEdit()"></div>
-    <div class="npk-ig"><label class="lbl-p" for="cp">P — phosphorus</label><input type="number" id="cp" value="5" min="0" step="1" oninput="onNpkEdit()"></div>
-    <div class="npk-ig"><label class="lbl-k" for="ck">K — potassium</label><input type="number" id="ck" value="10" min="0" step="1" oninput="onNpkEdit()"></div>
+    <div class="npk-ig"><label class="lbl-n" for="cn">N — nitrogen (ppm)</label><input type="number" id="cn" value="90" min="0" step="5" oninput="onNpkEdit()"></div>
+    <div class="npk-ig"><label class="lbl-p" for="cp">P — phosphorus (ppm)</label><input type="number" id="cp" value="47" min="0" step="5" oninput="onNpkEdit()"></div>
+    <div class="npk-ig"><label class="lbl-k" for="ck">K — potassium (ppm)</label><input type="number" id="ck" value="144" min="0" step="5" oninput="onNpkEdit()"></div>
   </div>
-  <p class="npk-hint">Edit fields for a custom ratio, or click a stage button or table row to load a preset.</p>
+  <p class="npk-hint">Values are target nutrient concentrations in ppm (mg/L), not a fertilizer-label ratio. Edit fields for a custom target, or click a stage button or table row to load a preset.</p>
 </div>
 
 <div class="card">
@@ -108,9 +108,9 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
   <div class="sec">NPK ratio</div>
   <div class="npk-bar" id="npkbar"></div>
   <div class="npk-leg">
-    <span><span class="sw" style="background:#185FA5"></span>N — nitrogen</span>
-    <span><span class="sw" style="background:#3B6D11"></span>P — phosphorus</span>
-    <span><span class="sw" style="background:#BA7517"></span>K — potassium</span>
+    <span><span class="sw" style="background:#185FA5"></span>N (ppm)</span>
+    <span><span class="sw" style="background:#3B6D11"></span>P (ppm)</span>
+    <span><span class="sw" style="background:#BA7517"></span>K (ppm)</span>
   </div>
 </div>
 
@@ -131,27 +131,40 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
     <a href="https://aero-gro.com/recommended-ec-and-ph-for-hydroponic-vegetables-herbs-and-cannabis/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Aero-Gro — Recommended EC and pH for Hydroponic Vegetables, Herbs, and Cannabis</a>
     <a href="https://www.aquagardening.com.au/learn/complete-ec-ph-levels-chart-hydroponic-plants/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Aqua Gardening — Complete EC &amp; pH Levels Chart for Hydroponic Plants</a>
     <a href="https://bloomingreen.com/ph-and-ec-levels-for-hydroponic-vegetables/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Bloomingreen — pH and EC Levels for Hydroponic Vegetables: 101 Ultimate Guide</a>
+    <a href="https://ceac.arizona.edu/sites/default/files/Chapter%2010.pdf" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">CEAC, University of Arizona — Chapter 10: Fertigation Systems and Nutrient Solutions</a>
     <a href="https://completegrow.com.au/garden-plant-care-home/hydroponic-nutrients-for-herbs/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Complete Grow — Hydroponic Nutrients for Herbs (Basil, Mint, Parsley, Oregano, Thyme, Rosemary, Sage)</a>
+    <a href="http://hort.cornell.edu/greenhouse/crops/factsheets/hydroponic-recipes.pdf" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Cornell University — A Recipe for Hydroponic Success (Mattson, hydroponic-recipes.pdf)</a>
     <a href="https://www.drgreenthumbs.com.au/blogs/hydroponic-gardening/hydroponic-strawberry-nutrients-guide-2025-au" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Dr Green Thumbs — Hydroponic Strawberry Nutrients Guide 2025</a>
     <a href="https://earthone.io/plant/centella%20asiatica" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">EarthOne — How to Grow Centella asiatica (Gotu Kola)</a>
     <a href="https://farmtek.com.au/blogs/grow-better/grow-the-sweetest-juiciest-strawberries-ever-with-npk-fertilzers" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Farmtek Australia — NPK Fertilizers for Strawberries by Growth Stage</a>
     <a href="https://www.gardenvivid.com/8-essential-nutrients-for-thriving-hydroponic-strawberries/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Garden Vivid — 8 Essential Nutrients for Thriving Hydroponic Strawberries</a>
     <a href="https://greenridgehydroponics.com/electrical-conductivity-ec-ph-a-guide-for-hydroponic-vegetables/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Green Ridge Hydroponics — Electrical Conductivity &amp; pH Values for Hydroponic Vegetables</a>
+    <a href="https://github.com/danielfppps/hydrobuddy" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">HydroBuddy (danielfppps) — Open Source Hydroponic Nutrient Solution Calculator</a>
     <a href="https://hydrohowto.com/ph-ec-hydroponic-vegetable/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">HydroHowTo — List of pH &amp; EC Levels for 65+ Hydroponic Vegetables &amp; Herbs</a>
     <a href="https://hydroponicadvice.com/guides/hydroponic-strawberries-us" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Hydroponic Advice — Hydroponic Strawberries Guide</a>
     <a href="https://hyjo.co.uk/ph-ec-ppm-guide-for-hydroponics" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Hyjo — pH, EC &amp; PPM Guide for Hydroponics: Essential Nutrient Management</a>
+    <a href="https://www.intechopen.com/chapters/70957" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">IntechOpen — Nutrients for Hydroponic Systems in Fruit Crops</a>
+    <a href="https://www.producegrower.com/article/hydroponic-herb-production-optimal-ph-controlled-environment-agriculture-cea/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Iowa State University (Kramer, Currey &amp; Boldt) — pH Optima: Determining the Optimal pH for Hydroponic Herb Production (via Produce Grower)</a>
+    <a href="https://ishs.org/ishs-article/1315_78/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">ISHS — Effect of Different Nutrient Solution EC During Growth Stages on Fruit and Vegetative Characteristics of Strawberry in Hydroponic System</a>
+    <a href="https://ishs.org/ishs-article/747_62/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">ISHS — Effects of Different Nutrient Solutions on Yield, Quality and Nutrient Consumption of Green Beans</a>
     <a href="https://leavesandsoul.com/blogs/news/the-best-fertilizer-for-herbs-you-re-growing-indoors" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Leaves and Soul — Best Fertilizer for Indoor Herbs</a>
     <a href="https://letpot.com/blogs/hydroponics-system-knowledge-and-tips/hydroponic-herbs-a-beginners-top-10-list" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">LetPot — Hydroponic Herbs: A Beginner's Top 10 List</a>
+    <a href="https://www.mdpi.com/2073-4395/9/8/433" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">MDPI Agronomy — Selection of Fertilizer and Cultivar of Sweet Pepper and Eggplant for Hydroponic Production</a>
     <a href="https://extension.missouri.edu/publications/g6984" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Missouri University Extension — Hydroponic Nutrient Solutions (G6984)</a>
+    <a href="https://ohioline.osu.edu/factsheet/hyg-1437" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Ohio State University Extension — Hydroponic Nutrient Solution for Optimized Greenhouse Tomato Production (HYG-1437, Jensen/UA-CEA recipe)</a>
     <a href="https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Oklahoma State University Extension — Electrical Conductivity and pH Guide for Hydroponics (HLA-6722)</a>
     <a href="https://ponicslife.com/hydroponic-charts-for-fruits-and-vegetables-ph-tds-ec-cf-ppm/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">PonicsLife — Hydroponic Charts for Fruits and Vegetables: pH, TDS, EC, cF, PPM</a>
+    <a href="https://www.producegrower.com/article/edible-crop-species-differ-in-their-ph-effect-in-hydroponics/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Produce Grower — Edible Crop Species Differ in Their pH Effect in Hydroponics</a>
     <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10661198/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">PubMed Central — Peer-reviewed hydroponic research (Purslane, Duckweed, Gotu Kola, Strawberry)</a>
+    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11860082/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">PubMed Central — Substrate System Outperforms Water-Culture Systems for Hydroponic Strawberry Production</a>
     <a href="https://www.qpseedlings.com.au/blogs/news/optimal-npk-ratios-electrical-conductivity-ec-and-ph-levels-for-growing-vegetables" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">QP Seedlings — Optimal NPK Ratios, Electrical Conductivity (EC) and pH Levels for Growing Vegetables</a>
     <a href="https://www.qpseedlings.com.au/blogs/news/understanding-electrical-conductivity-ec-in-hydroponics-a-guide-to-optimal-growth-for-vegetables-and-fruits" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">QP Seedlings — Understanding Electrical Conductivity (EC) in Hydroponics</a>
+    <a href="https://scienceinhydroponics.com/2025/10/comparing-nutrient-solutions-for-hydroponic-tomatoes-what-the-research-says.html" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Science in Hydroponics — Comparing Nutrient Solutions for Hydroponic Tomatoes: What the Research Says</a>
     <a href="https://www.selfsufficientculture.com/threads/ph-and-ec-reference-for-plants-and-hydroponic.3678/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Self Sufficient Culture — pH and EC Reference for Hydroponic Plants and Herbs</a>
     <a href="https://shershegrows.com/hydroponic-ph-and-ec-chart/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Shershegrows — Best pH and EC Values for Hydroponics (Chart)</a>
     <a href="https://shershegrows.com/hydroponic-ph-and-ec-guide/" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">Shershegrows — Mastering Nutrients: A Simple Guide to pH and EC in Hydroponics</a>
     <a href="https://www.greeneryretail.com/post/suitable-ph-tds-and-ec-levels-for-specific-vegetables" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">The Greenery Retail — Suitable pH, TDS, and EC Levels for Specific Vegetables</a>
+    <a href="https://www.negreenhouse.org/uploads/9/4/8/2/94821076/dickson_2018_negc_nutrient_and_ph_for_hydroponics.pdf" target="_blank" rel="noopener" style="color:#3b7dd8;text-decoration:none;display:block">University of Arkansas (Ryan Dickson, Ph.D.) — Managing Nutrient Solutions for Hydroponic Crops</a>
     <p style="margin-top:10px;margin-bottom:0;font-size:12px;color:#666;line-height:1.7">All reasonable efforts have been made to ensure the accuracy of the information, however, Fred Thompson does not warrant the accuracy and reserves the right to change website content and site functions at any time without notice.</p>
   </div>
 </div>
@@ -170,113 +183,113 @@ h1{font-size:20px;font-weight:600;margin-bottom:0.25rem;color:#1a1a1a}
 <script>
 const T1=[
   {key:'beans',   e:'🌱',name:'Beans',
-   veg:{npk:[5,5,5],  ec:'1.8–2.0',s:'Veg',    info:'Early vine and leaf development. Keep nitrogen modest — excess N suppresses pod set in legumes.'},
-   flo:{npk:[5,10,10],ec:'2.0–2.2',s:'Flower',  info:'Phosphorus triggers flower initiation. Pull nitrogen back as first flowers appear.'},
-   fru:{npk:[3,10,10],ec:'2.2–2.4',s:'Fruit',   info:'Potassium drives pod fill, flavor, and disease resistance through harvest.'},
+   veg:{npk:[60,35,100], ec:'1.8–2.0',s:'Veg',    info:'Early vine and leaf development. Keep nitrogen modest — excess N suppresses pod set in legumes.'},
+   flo:{npk:[70,35,150], ec:'2.0–2.2',s:'Flower',  info:'Potassium begins rising for pod set. Phosphorus stays low and roughly flat — it does not spike at flowering.'},
+   fru:{npk:[80,35,190], ec:'2.2–2.4',s:'Fruit',   info:'Potassium drives pod fill, flavor, and disease resistance through harvest. Nitrogen stays modest throughout — legumes don\'t need the N push that fruiting vegetables do.'},
    ph:'6.0',light:'☀️ Full Sun'},
   {key:'cucumber',e:'🥒',name:'Cucumber',
-   veg:{npk:[10,5,10],ec:'1.7–2.0',s:'Veg',    info:'Rapid vine growth demands strong nitrogen. Establish a robust canopy before first flowers appear.'},
-   flo:{npk:[5,10,10],ec:'2.0–2.5',s:'Flower',  info:'Shift toward potassium. Phosphorus supports flower initiation and root strength.'},
-   fru:{npk:[3,10,10],ec:'2.5–3.0',s:'Fruit',   info:'Potassium governs fruit cell expansion and skin quality. Harvest every 2–3 days to sustain production.'},
+   veg:{npk:[100,45,150],ec:'1.7–2.0',s:'Veg',    info:'Rapid vine growth demands strong nitrogen. Establish a robust canopy before first flowers appear.'},
+   flo:{npk:[130,45,220],ec:'2.0–2.5',s:'Flower',  info:'Potassium rises for fruit set. Phosphorus stays low and flat throughout — research (5N-4.8P-21.6K commercial formula validated for cucumber) shows P does not spike at flowering.'},
+   fru:{npk:[150,45,280],ec:'2.5–3.0',s:'Fruit',   info:'Potassium governs fruit cell expansion and skin quality. Nitrogen continues rising, not dropping. Harvest every 2–3 days to sustain production.'},
    ph:'5.0–5.5',light:'☀️ Full Sun'},
   {key:'eggplant',e:'🍆',name:'Eggplant',
-   veg:{npk:[10,5,10],ec:'1.8–2.2',s:'Veg',    info:'Long vegetative phase — 40–50 days to transplant readiness. Prioritize nitrogen and calcium for strong cell walls.'},
-   flo:{npk:[5,15,10],ec:'2.2–2.8',s:'Flower',  info:'High phosphorus at flower set. Eggplant drops flowers under stress — stable EC and temperature are critical.'},
-   fru:{npk:[5,10,10],ec:'2.8–3.5',s:'Fruit',   info:'Sustained potassium through the long fruit development period. Change solution every 30–60 days.'},
+   veg:{npk:[110,50,160],ec:'1.8–2.2',s:'Veg',    info:'Long vegetative phase — 40–50 days to transplant readiness. Prioritize nitrogen and calcium for strong cell walls.'},
+   flo:{npk:[140,50,230],ec:'2.2–2.8',s:'Flower',  info:'Potassium rises for flower and fruit set. Phosphorus remains low and flat — eggplant drops flowers under stress, so stable EC and temperature matter more than a P boost.'},
+   fru:{npk:[160,50,290],ec:'2.8–3.5',s:'Fruit',   info:'Sustained, rising potassium through the long fruit development period. Nitrogen also continues climbing. Change solution every 30–60 days.'},
    ph:'6.0',light:'☀️ Full Sun'},
   {key:'garlic',  e:'🧄',name:'Garlic',
-   veg:{npk:[10,5,5], ec:'1.4–1.6',s:'Veg',    info:'Nitrogen drives leaf and scape growth. Use softneck varieties — hardneck requires cold stratification.'},
-   flo:{npk:[5,10,10],ec:'1.5–1.7',s:'Bulb',   info:'As leaves begin yellowing, phosphorus supports bulb plate formation and clove differentiation.'},
-   fru:{npk:[3,10,10],ec:'1.6–1.8',s:'Mature',  info:'Pull nitrogen. Potassium drives bulb size and wrapper integrity. Reduce watering as bulbs approach harvest.'},
+   veg:{npk:[100,40,90], ec:'1.4–1.6',s:'Veg',    info:'Nitrogen drives leaf and scape growth that fuels the bulb. Use softneck varieties — hardneck requires cold stratification.'},
+   flo:{npk:[90,50,150], ec:'1.5–1.7',s:'Bulb',   info:'As leaves begin yellowing, phosphorus supports bulb plate formation and clove differentiation while potassium starts climbing.'},
+   fru:{npk:[50,45,190], ec:'1.6–1.8',s:'Mature',  info:'Nitrogen drops as bulbs mature. Potassium drives bulb size and wrapper integrity. Reduce watering as bulbs approach harvest.'},
    ph:'6.0–6.5',light:'☀️ Full Sun'},
   {key:'lettuce', e:'🥬',name:'Lettuce',
-   veg:{npk:[5,5,5],  ec:'0.8–1.2',s:'Seedling',info:'Gentle balanced feed for tender seedling roots. Low EC prevents tip-burn on young leaves.'},
-   flo:{npk:[5,5,5],  ec:'1.2–1.8',s:'Veg',    info:'Lettuce is harvested in the vegetative stage. Steady nitrogen maintains leaf color without triggering early bolt.'},
-   fru:{npk:null,     ec:null,      s:'—',       info:'Lettuce is harvested before flowering. No fruiting stage applies.'},
+   veg:{npk:[60,30,100], ec:'0.8–1.2',s:'Seedling',info:'Gentle balanced feed for tender seedling roots. Low EC prevents tip-burn on young leaves.'},
+   flo:{npk:[150,50,210],ec:'1.2–1.8',s:'Veg',    info:'Lettuce is harvested in the vegetative stage. Moderate-to-high N with strong K maintains leaf quality without triggering early bolt — consistent with commercial lettuce formulas (e.g. 8-15-36).'},
+   fru:{npk:null,        ec:null,      s:'—',       info:'Lettuce is harvested before flowering. No fruiting stage applies.'},
    ph:'6.0–7.0',light:'🌤️ Partial Shade'},
   {key:'melons',  e:'🍈',name:'Melons',
-   veg:{npk:[10,5,5], ec:'1.5–2.0',s:'Veg',    info:'Heavy vine establishment requires strong nitrogen. Build the full canopy before allowing flowers to set.'},
-   flo:{npk:[5,10,10],ec:'2.0–2.2',s:'Flower',  info:'Critical: excess nitrogen at flower set causes up to 1/3 of female flowers to abort. Drop N decisively.'},
-   fru:{npk:[3,10,10],ec:'2.2–2.4',s:'Fruit',   info:'Potassium is the primary driver of sugar accumulation and Brix. Reduce nitrogen to near zero through ripening.'},
+   veg:{npk:[100,40,130],ec:'1.5–2.0',s:'Veg',    info:'Heavy vine establishment requires strong nitrogen. Build the full canopy before allowing flowers to set.'},
+   flo:{npk:[120,40,200],ec:'2.0–2.2',s:'Flower',  info:'Critical: excess nitrogen at flower set causes up to 1/3 of female flowers to abort, so N growth slows here even as it keeps climbing. Phosphorus stays low and flat.'},
+   fru:{npk:[140,40,260],ec:'2.2–2.4',s:'Fruit',   info:'Potassium is the primary driver of sugar accumulation and Brix, climbing sharply through ripening. Nitrogen continues at a modest, steady level rather than dropping to zero.'},
    ph:'5.8–6.2',light:'☀️ Full Sun'},
   {key:'peppers', e:'🌶️',name:'Peppers',
-   veg:{npk:[10,5,10],ec:'0.8–1.2',s:'Veg',    info:'Longest vegetative phase of common fruiting crops — 3–4 months from seed. Keep EC low early; bell peppers 0.8–1.8 throughout; hot peppers tolerate higher.'},
-   flo:{npk:[5,15,10],ec:'1.2–1.5',s:'Flower',  info:'Highest phosphorus need of any crop in our list. Stable temperature above 65°F is critical — cold causes flower drop.'},
-   fru:{npk:[5,10,10],ec:'1.5–1.8',s:'Fruit',   info:'Sustained potassium through the extended fruiting period. Maintain K consistently through final ripening.'},
+   veg:{npk:[90,48,140], ec:'0.8–1.2',s:'Veg',    info:'Longest vegetative phase of common fruiting crops — 3–4 months from seed. Keep EC low early; bell peppers 0.8–1.8 throughout; hot peppers tolerate higher.'},
+   flo:{npk:[130,48,200],ec:'1.2–1.5',s:'Flower',  info:'Potassium rises sharply for fruit set. Phosphorus stays low and flat — matches the 5N-4.8P-21.6K formula validated in peer-reviewed Dutch bucket trials for sweet pepper.'},
+   fru:{npk:[150,48,260],ec:'1.5–1.8',s:'Fruit',   info:'Sustained, rising potassium through the extended fruiting period. Nitrogen also keeps climbing rather than dropping off.'},
    ph:'5.5–6.0',light:'☀️ Full Sun'},
   {key:'squash',  e:'🎃',name:'Squash',
-   veg:{npk:[10,5,10],ec:'1.8–2.0',s:'Veg',    info:'Large leaves and rapid vine growth demand strong nitrogen early. Train vertically in hydro systems.'},
-   flo:{npk:[5,15,10],ec:'2.0–2.2',s:'Flower',  info:'Squash flowers prolifically but requires potassium to set rather than drop. Hand pollination needed indoors.'},
-   fru:{npk:[5,10,10],ec:'2.2–2.4',s:'Fruit',   info:'Harvest young (6–8 inches) to keep the plant producing. Leaving mature fruit on vine signals the plant to stop.'},
+   veg:{npk:[110,45,140],ec:'1.8–2.0',s:'Veg',    info:'Large leaves and rapid vine growth demand strong nitrogen early. Train vertically in hydro systems.'},
+   flo:{npk:[130,45,210],ec:'2.0–2.4',s:'Flower',  info:'Squash flowers prolifically but requires potassium, not extra phosphorus, to set fruit rather than drop it. Hand pollination needed indoors.'},
+   fru:{npk:[150,45,270],ec:'2.4–2.8',s:'Fruit',   info:'Harvest young (6–8 inches) to keep the plant producing. Leaving mature fruit on vine signals the plant to stop flowering.'},
    ph:'5.8–6.5',light:'☀️ Full Sun'},
   {key:'strawberry',e:'🍓',name:'Strawberry',
-   veg:{npk:[10,5,10],ec:'1.0–1.4',s:'Veg',    info:'Establish runners and crown during vegetative stage. Strawberries are EC-sensitive — start low and increase gradually. Use day-neutral varieties for continuous indoor production.'},
-   flo:{npk:[5,15,10],ec:'1.4–1.8',s:'Flower',  info:'High phosphorus triggers flower initiation. Hand-pollinate every open flower with a soft paintbrush every 2–3 days — no bees indoors means no fruit without manual pollination.'},
-   fru:{npk:[5,10,15],ec:'1.8–2.2',s:'Fruit',   info:'Potassium drives sugar content, berry firmness, and flavor. Keep EC below 2.2 — strawberries are more salt-sensitive than tomatoes or peppers.'},
+   veg:{npk:[60,30,90],  ec:'0.9–1.3',s:'Veg',    info:'Establish runners and crown during vegetative stage. Strawberries are EC-sensitive — start low and increase gradually. Use day-neutral varieties for continuous indoor production.'},
+   flo:{npk:[75,30,130], ec:'1.3–1.7',s:'Flower',  info:'Potassium climbs for flower and fruit set; phosphorus stays low and flat. Hand-pollinate every open flower with a soft paintbrush every 2–3 days — no bees indoors means no fruit without manual pollination.'},
+   fru:{npk:[90,30,180], ec:'1.7–2.5',s:'Fruit',   info:'Potassium drives sugar content, berry firmness, and flavor. Strawberries are more salt-sensitive than tomatoes or peppers — monitor closely as EC approaches the upper end.'},
    ph:'5.5–6.0',light:'🌤️ Partial Sun'},
   {key:'tomatobush',e:'🍅',name:'Tomato, bush',
-   veg:{npk:[10,5,10],ec:'2.0–2.5',s:'Veg',    info:'Determinate (bush) variety — Roma, Celebrity, Rutgers. Establish root system and canopy before first truss. Plant stops growing once fruit sets, so the vegetative phase is short and focused.'},
-   flo:{npk:[5,10,10],ec:'2.5–3.0',s:'Flower',  info:'Shift N to P and K aggressively at first flower buds — determinates flower in a compressed window. Maintain calcium and magnesium to prevent blossom end rot.'},
-   fru:{npk:[3,10,10],ec:'3.5–4.0',s:'Fruit',   info:'Push EC higher during the single fruit-set window to maximize sugar and size. Nitrogen is essentially done — feed potassium hard through to harvest. Change reservoir every 14 days.'},
+   veg:{npk:[90,47,144], ec:'2.0–2.5',s:'Veg',    info:'Determinate (bush) variety — Roma, Celebrity, Rutgers. Matches the Jensen/University of Arizona Stage 1 hydroponic recipe (90N-47P-144K ppm). Plant stops growing once fruit sets, so the vegetative phase is short and focused.'},
+   flo:{npk:[120,47,250],ec:'2.5–3.0',s:'Flower',  info:'Nitrogen and potassium both continue rising — phosphorus stays flat at the same level as vegetative growth. Maintain calcium and magnesium to prevent blossom end rot.'},
+   fru:{npk:[190,47,350],ec:'3.5–4.0',s:'Fruit',   info:'Matches the Jensen/UA Stage 3 recipe (190N-47P-350K ppm) — the highest N and K of the cycle, since determinates set their full fruit load in one compressed window. Change reservoir every 14 days.'},
    ph:'6.0–6.5',light:'☀️ Full Sun'},
   {key:'tomatovine',e:'🍅',name:'Tomato, vine',
-   veg:{npk:[10,5,10],ec:'2.0–2.5',s:'Veg',    info:'Indeterminate (vining) variety — Beefsteak, Cherokee Purple, cherry tomatoes, most heirlooms. Longer vegetative phase; plant continues growing throughout its life alongside fruiting.'},
-   flo:{npk:[5,10,10],ec:'2.5–3.0',s:'Flower',  info:'Transition to higher P and K at first visible flower buds. Maintain calcium and magnesium to prevent blossom end rot.'},
-   fru:{npk:[4,10,10],ec:'3.0–3.5',s:'Fruit',   info:'Keep trace nitrogen throughout — vining tomatoes grow and fruit simultaneously and always need some N. Change reservoir every 7–10 days. Runs 90–180+ days.'},
+   veg:{npk:[90,47,144], ec:'2.0–2.5',s:'Veg',    info:'Indeterminate (vining) variety — Beefsteak, Cherokee Purple, cherry tomatoes, most heirlooms. Same Jensen/UA Stage 1 starting point as bush varieties (90N-47P-144K ppm).'},
+   flo:{npk:[120,47,250],ec:'2.5–3.0',s:'Flower',  info:'Nitrogen and potassium rise together; phosphorus stays flat. Maintain calcium and magnesium to prevent blossom end rot.'},
+   fru:{npk:[160,47,300],ec:'3.0–3.5',s:'Fruit',   info:'Slightly below the bush-variety peak since vining types sustain a longer, steadier fruiting window (90–180+ days) rather than one compressed push. Change reservoir every 7–10 days.'},
    ph:'6.0–6.5',light:'☀️ Full Sun'},
 ];
 
 const T2_QPS=[
-  {e:'🌿',v:'Arugula',       npk:'5-10-10', ec:'0.8–1.6',ph:'6.0–7.0',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Basil',         npk:'5-10-10', ec:'1.0–1.6',ph:'5.5–6.0',light:'☀️ Full Sun'},
-  {e:'🍠',v:'Beet',          npk:'10-10-10',ec:'1.6–2.5',ph:'6.0–6.5',light:'☀️ Full Sun'},
-  {e:'🥬',v:'Bok Choy',      npk:'5-10-10', ec:'1.5–2.0',ph:'6.5–7.0',light:'🌤️ Partial Shade'},
-  {e:'🥦',v:'Broccoli',      npk:'5-10-10', ec:'2.8–3.5',ph:'6.0–6.8',light:'☀️ Full Sun'},
-  {e:'🥦',v:'Brussel Sprouts',npk:'5-10-10',ec:'2.5–3.0',ph:'6.0–6.8',light:'☀️ Full Sun'},
-  {e:'🥬',v:'Cabbage',       npk:'5-10-10', ec:'2.5–3.0',ph:'6.5–7.0',light:'☀️ Full Sun'},
-  {e:'🥕',v:'Carrot',        npk:'5-10-10', ec:'1.6–2.0',ph:'5.8–6.4',light:'🌤️ Partial Sun'},
-  {e:'🌼',v:'Cauliflower',   npk:'5-10-10', ec:'0.5–2.0',ph:'6.0–6.8',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Celery',        npk:'5-10-10', ec:'1.8–2.4',ph:'6.0–6.5',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Chives',        npk:'5-10-10', ec:'1.8–2.4',ph:'6.0–6.5',light:'🌤️ Partial Sun'},
-  {e:'🌿',v:'Cilantro',      npk:'5-10-10', ec:'1.0–1.6',ph:'5.5–6.5',light:'🌤️ Partial Sun'},
-  {e:'🌿',v:'Collard Greens',npk:'5-10-10', ec:'1.5–2.0',ph:'6.0–6.8',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Dill',          npk:'5-10-10', ec:'1.0–1.6',ph:'5.5–6.5',light:'☀️ Full Sun'},
+  {e:'🌿',v:'Arugula',       npk:'140-29-196 ppm',ec:'0.8–1.6',ph:'5.7–6.0',light:'🌤️ Partial Shade'},
+  {e:'🌿',v:'Basil',         npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'4.5–6.5',light:'☀️ Full Sun'},
+  {e:'🍠',v:'Beet',          npk:'10-5-20', ec:'1.6–2.5',ph:'6.0–6.5',light:'☀️ Full Sun'},
+  {e:'🥬',v:'Bok Choy',      npk:'175-36-245 ppm',ec:'1.5–2.0',ph:'7.0',light:'🌤️ Partial Shade'},
+  {e:'🥦',v:'Broccoli',      npk:'175-36-245 ppm',ec:'2.8–3.5',ph:'6.0–6.8',light:'☀️ Full Sun'},
+  {e:'🥦',v:'Brussel Sprouts',npk:'175-36-245 ppm',ec:'2.5–3.0',ph:'6.0–6.8',light:'☀️ Full Sun'},
+  {e:'🥬',v:'Cabbage',       npk:'200-41-280 ppm',ec:'2.5–3.0',ph:'6.5–7.0',light:'☀️ Full Sun'},
+  {e:'🥕',v:'Carrot',        npk:'4-14-14', ec:'1.6–2.0',ph:'5.8–6.4',light:'🌤️ Partial Sun'},
+  {e:'🌼',v:'Cauliflower',   npk:'175-36-245 ppm',ec:'0.5–2.0',ph:'6.0–6.8',light:'☀️ Full Sun'},
+  {e:'🌿',v:'Celery',        npk:'175-36-245 ppm',ec:'1.8–2.4',ph:'6.5',light:'🌤️ Partial Shade'},
+  {e:'🌿',v:'Chives',        npk:'150-31-210 ppm',ec:'1.8–2.4',ph:'6.0–6.5',light:'🌤️ Partial Sun'},
+  {e:'🌿',v:'Cilantro',      npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'5.5–6.5',light:'🌤️ Partial Sun'},
+  {e:'🌿',v:'Collard Greens',npk:'175-36-245 ppm',ec:'1.5–2.0',ph:'6.0–6.8',light:'☀️ Full Sun'},
+  {e:'🌿',v:'Dill',          npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'5.0–6.0',light:'☀️ Full Sun'},
   {e:'🌿',v:'Duckweed',      npk:'5-5-5',   ec:'0.5–1.0',ph:'6.5–7.5',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Endive',        npk:'5-10-10', ec:'1.0–1.8',ph:'5.5–6.5',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Fennel',        npk:'5-10-10', ec:'1.0–1.4',ph:'6.0–6.5',light:'☀️ Full Sun'},
+  {e:'🌿',v:'Endive',        npk:'175-36-245 ppm',ec:'1.0–1.8',ph:'5.5–6.5',light:'🌤️ Partial Shade'},
+  {e:'🌿',v:'Fennel',        npk:'150-31-210 ppm',ec:'1.0–1.4',ph:'6.4–6.8',light:'☀️ Full Sun'},
   {e:'🌿',v:'Gotu Kola',     npk:'10-10-10',ec:'1.0–1.8',ph:'6.0–7.0',light:'🌤️ Partial Shade'},
-  {e:'🌱',v:'Green Beans',   npk:'5-10-10', ec:'2.0–4.0',ph:'6.0–6.0',light:'☀️ Full Sun'},
-  {e:'🥦',v:'Kale',          npk:'5-5-10',  ec:'1.5–2.5',ph:'5.5–6.5',light:'🌤️ Partial Shade'},
-  {e:'🥔',v:'Leek',          npk:'5-10-10', ec:'1.4–1.8',ph:'6.5–7.0',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Lemon Balm',    npk:'5-10-10', ec:'1.0–1.6',ph:'5.5–6.5',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Mint',          npk:'5-10-10', ec:'2.0–2.4',ph:'5.5–6.0',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Mustard Greens',npk:'5-10-10', ec:'1.2–2.0',ph:'6.0–6.5',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Okra',          npk:'5-10-10', ec:'2.0–2.4',ph:'6.0–6.5',light:'☀️ Full Sun'},
-  {e:'🧅',v:'Onion',         npk:'10-10-10',ec:'1.4–1.8',ph:'6.0–6.5',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Oregano',       npk:'5-10-5',  ec:'1.0–1.6',ph:'5.5–6.5',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Parsley',       npk:'5-10-10', ec:'1.8–2.2',ph:'6.0–6.5',light:'🌤️ Partial Shade'},
-  {e:'🥕',v:'Parsnip',       npk:'5-10-10', ec:'1.4–1.8',ph:'5.5–6.5',light:'🌤️ Partial Sun'},
+  {e:'🌱',v:'Green Beans',   npk:'35-20-83 ppm', ec:'2.0–4.0',ph:'6.0–6.0',light:'☀️ Full Sun'},
+  {e:'🥦',v:'Kale',          npk:'200-41-280 ppm',ec:'1.5–2.0',ph:'6.0–7.0',light:'🌤️ Partial Shade'},
+  {e:'🥔',v:'Leek',          npk:'150-31-210 ppm',ec:'1.4–1.8',ph:'6.5–7.0',light:'☀️ Full Sun'},
+  {e:'🌿',v:'Lemon Balm',    npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'5.5–6.5',light:'🌤️ Partial Shade'},
+  {e:'🌿',v:'Mint',          npk:'150-31-210 ppm',ec:'2.0–2.4',ph:'5.5–6.0',light:'🌤️ Partial Shade'},
+  {e:'🌿',v:'Mustard Greens',npk:'200-41-280 ppm',ec:'1.2–2.4',ph:'5.5–6.8',light:'☀️ Full Sun'},
+  {e:'🌿',v:'Okra',          npk:'5-8-15',  ec:'2.0–2.4',ph:'6.5',light:'☀️ Full Sun'},
+  {e:'🧅',v:'Onion',         npk:'150-31-210 ppm',ec:'1.4–1.8',ph:'6.0–6.5',light:'☀️ Full Sun'},
+  {e:'🌿',v:'Oregano',       npk:'3-5-8',   ec:'1.0–1.6',ph:'5.5–6.5',light:'☀️ Full Sun'},
+  {e:'🌿',v:'Parsley',       npk:'150-31-210 ppm',ec:'1.8–2.2',ph:'5.0–6.0',light:'🌤️ Partial Shade'},
+  {e:'🥕',v:'Parsnip',       npk:'4-14-14', ec:'1.4–1.8',ph:'5.5–6.5',light:'🌤️ Partial Sun'},
   {e:'🥒',v:'Peas',          npk:'5-10-10', ec:'0.8–1.8',ph:'6.0–7.0',light:'🌤️ Partial Sun'},
-  {e:'🎃',v:'Pumpkin',       npk:'5-10-10', ec:'1.8–2.4',ph:'5.8–6.5',light:'☀️ Full Sun'},
+  {e:'🎃',v:'Pumpkin',       npk:'5-10-25', ec:'1.8–2.4',ph:'5.8–6.5',light:'☀️ Full Sun'},
   {e:'🌿',v:'Purslane',      npk:'10-5-10', ec:'1.6–2.4',ph:'5.5–6.5',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Radicchio',     npk:'5-10-10', ec:'1.0–1.6',ph:'6.0–6.5',light:'🌤️ Partial Shade'},
-  {e:'🌶️',v:'Radish',        npk:'5-10-10', ec:'1.6–2.2',ph:'5.5–6.5',light:'🌤️ Partial Sun'},
-  {e:'🌿',v:'Rosemary',      npk:'5-10-5',  ec:'1.0–1.6',ph:'5.5–6.0',light:'☀️ Full Sun'},
-  {e:'🌿',v:'Sage',          npk:'5-10-5',  ec:'1.0–1.6',ph:'5.5–6.5',light:'☀️ Full Sun'},
-  {e:'🥗',v:'Spinach',       npk:'10-10-10',ec:'1.8–2.3',ph:'6.0–7.0',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Swiss Chard',   npk:'5-10-10', ec:'1.8–2.3',ph:'6.0–6.5',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Tarragon',      npk:'5-10-10', ec:'1.0–1.6',ph:'5.5–6.5',light:'🌤️ Partial Shade'},
-  {e:'🌿',v:'Thyme',         npk:'5-10-5',  ec:'0.8–1.6',ph:'5.5–7.0',light:'☀️ Full Sun'},
-  {e:'🥕',v:'Turnip',        npk:'5-10-10', ec:'1.8–2.4',ph:'5.5–6.5',light:'🌤️ Partial Sun'},
-  {e:'🌿',v:'Watercress',    npk:'5-10-10', ec:'0.4–1.8',ph:'6.5–6.8',light:'🌤️ Partial Shade'},
-  {e:'🎃',v:'Zucchini',      npk:'5-10-10', ec:'1.8–2.4',ph:'5.8–6.5',light:'☀️ Full Sun'},
+  {e:'🌿',v:'Radicchio',     npk:'140-29-196 ppm',ec:'1.0–1.6',ph:'6.0–6.5',light:'🌤️ Partial Shade'},
+  {e:'🌶️',v:'Radish',        npk:'4-14-14', ec:'1.6–2.2',ph:'5.5–6.5',light:'🌤️ Partial Sun'},
+  {e:'🌿',v:'Rosemary',      npk:'3-5-8',   ec:'1.0–1.6',ph:'5.5–6.0',light:'☀️ Full Sun'},
+  {e:'🌿',v:'Sage',          npk:'3-5-8',   ec:'1.0–1.6',ph:'5.5–6.5',light:'☀️ Full Sun'},
+  {e:'🥗',v:'Spinach',       npk:'200-41-280 ppm',ec:'1.8–2.3',ph:'6.0–7.0',light:'🌤️ Partial Shade'},
+  {e:'🌿',v:'Swiss Chard',   npk:'200-41-280 ppm',ec:'1.5–2.5',ph:'6.0–7.5',light:'🌤️ Partial Shade'},
+  {e:'🌿',v:'Tarragon',      npk:'150-31-210 ppm',ec:'1.0–1.6',ph:'5.5–6.5',light:'🌤️ Partial Shade'},
+  {e:'🌿',v:'Thyme',         npk:'3-5-8',   ec:'0.8–1.6',ph:'5.5–7.0',light:'☀️ Full Sun'},
+  {e:'🥕',v:'Turnip',        npk:'4-14-14', ec:'1.8–2.4',ph:'5.5–6.5',light:'🌤️ Partial Sun'},
+  {e:'🌿',v:'Watercress',    npk:'125-26-175 ppm',ec:'0.4–1.8',ph:'6.5–6.8',light:'🌤️ Partial Shade'},
+  {e:'🎃',v:'Zucchini',      npk:'5-15-10', ec:'1.8–2.4',ph:'5.8–6.5',light:'☀️ Full Sun'},
 ];
 
 const COLORS=['#185FA5','#3B6D11','#BA7517'];
 let activeT1Key=null,activeT1Col=null,activeT2Idx=null;
 let ALL_T2=[];
 
-function parseNpk(s){const p=s.split('-').map(Number);return{n:p[0]||0,p:p[1]||0,k:p[2]||0};}
+function parseNpk(s){const clean=s.replace(/\s*ppm\s*$/i,'');const p=clean.split('-').map(Number);return{n:p[0]||0,p:p[1]||0,k:p[2]||0};}
 
 function clearAll(){
   document.querySelectorAll('.stage-btn').forEach(b=>b.classList.remove('active'));
@@ -331,9 +344,6 @@ function calc(){
   const k=Math.max(0,parseInt(document.getElementById('ck').value)||0);
   const vol=parseFloat(document.getElementById('vol').value)||0;
   const gal=document.getElementById('unit').value==='gal'?vol:vol/3.78541;
-  const scalar=(n+p+k)>0?((n+p+k)/30):1;
-  const scale=(gal/5)*scalar;
-  const mb=12*scale,es=6*scale,cn=12*scale;
   const fmt=v=>v<10?v.toFixed(2):v.toFixed(1);
 
   let ecStr='—',phStr='—';
@@ -347,12 +357,70 @@ function calc(){
     phStr=ALL_T2[activeT2Idx].ph;
   }
 
+  // 5-ingredient blend solver.
+  // Base: Masterblend Tomato Formula 4-18-38 (elemental P:K = 0.249).
+  // If the target P:K ratio is ABOVE the Tomato Formula's own ratio, blend in
+  // Miracle-Gro Bloom Booster 15-30-15 (elemental P:K = 1.051) to push P:K up —
+  // this is the case for vegetative-stage targets.
+  // If the target P:K ratio is BELOW Tomato Formula's own ratio, blend in
+  // Sulphate of Potash 0-0-50 (pure K, no P) to pull P:K down — this is the
+  // case for flowering/fruiting-stage targets, where Tomato Formula alone
+  // under-delivers potassium relative to research targets.
+  // Calcium Nitrate trims nitrogen to the target. Epsom salt scales with the
+  // combined Tomato Formula + Bloom Booster grams to top up magnesium.
+  const P2O5_TO_P=0.4364, K2O_TO_K=0.8301;
+  const TOM_N=0.04, TOM_P=0.18*P2O5_TO_P, TOM_K=0.38*K2O_TO_K;       // Masterblend 4-18-38
+  const MG_N=0.15,  MG_P=0.30*P2O5_TO_P,  MG_K=0.15*K2O_TO_K;        // Miracle-Gro 15-30-15
+  const SOP_K=0.50*K2O_TO_K;                                          // Sulphate of Potash 0-0-50
+  const CN_N=0.155;                                                   // Calcium Nitrate 15.5-0-0
+  const EPSOM_MG=0.0986;                                              // Epsom salt MgSO4*7H2O
+  const TOM_MG=0.005;                                                 // Masterblend's own Mg content
+  const TOM_PK=TOM_P/TOM_K;
+
+  const liters=gal*3.78541;
+  let tf_g=0, mg_g=0, sop_g=0, cn_g=0, es_g=0;
+
+  if(p>0 && k>0 && liters>0){
+    const targetPK=p/k;
+    if(targetPK>=TOM_PK){
+      // Blend Tomato Formula + Bloom Booster to hit target P:K (clamped at Bloom Booster's own ratio)
+      const MG_PK=MG_P/MG_K;
+      const clamped=Math.min(targetPK, MG_PK);
+      const denom=(MG_P-TOM_P)-clamped*(MG_K-TOM_K);
+      let f=Math.abs(denom)>1e-12 ? (clamped*TOM_K-TOM_P)/denom : 0;
+      f=Math.max(0,Math.min(1,f));
+      const pPerGram=(1-f)*TOM_P+f*MG_P;
+      const totalBase=pPerGram>0 ? (p*liters)/(pPerGram*1000) : 0;
+      tf_g=(1-f)*totalBase; mg_g=f*totalBase; sop_g=0;
+    } else {
+      // P comes only from Tomato Formula; add Sulphate of Potash for extra K
+      tf_g = TOM_P>0 ? (p*liters)/(TOM_P*1000) : 0;
+      mg_g=0;
+      const kFromTfPpm=(tf_g*TOM_K*1000)/liters;
+      const kNeededPpm=Math.max(0, k-kFromTfPpm);
+      sop_g = SOP_K>0 ? (kNeededPpm*liters)/(SOP_K*1000) : 0;
+    }
+    const nFromBasePpm=((tf_g*TOM_N+mg_g*MG_N)*1000)/liters;
+    const nNeededPpm=Math.max(0, n-nFromBasePpm);
+    cn_g = CN_N>0 ? (nNeededPpm*liters)/(CN_N*1000) : 0;
+
+    // Epsom: top up Mg using a 5gal-equivalent target ratio, scaled to base grams
+    const mgFromBase=tf_g*TOM_MG+mg_g*TOM_MG;
+    const targetMgPer5gal=12*0.005+6*EPSOM_MG; // matches Masterblend's own 12:6 reference
+    const mgTargetPpm=(targetMgPer5gal*1000)/(5*3.78541);
+    const mgFromBasePpm=(mgFromBase*1000)/liters;
+    const mgNeededPpm=Math.max(0, mgTargetPpm-mgFromBasePpm);
+    es_g = EPSOM_MG>0 ? (mgNeededPpm*liters)/(EPSOM_MG*1000) : 0;
+  }
+
   document.getElementById('results').innerHTML=[
-    {l:'Masterblend',    v:fmt(mb), u:'g'},
-    {l:'Epsom salt',     v:fmt(es), u:'g'},
-    {l:'Calcium nitrate',v:fmt(cn), u:'g'},
-    {l:'EC target',      v:ecStr,   u:'mS/cm'},
-    {l:'pH range',       v:phStr,   u:''}
+    {l:'Masterblend<br>Tomato 4-18-38',    v:fmt(tf_g), u:'g'},
+    {l:'Epsom Salt<br>&nbsp;',     v:fmt(es_g), u:'g'},
+    {l:'Calcium Nitrate<br>&nbsp;',v:fmt(cn_g), u:'g'},
+    {l:'MiracleGro Bloom<br>Booster 15-30-15',  v:fmt(mg_g), u:'g'},
+    {l:'Sulphate of<br>Potash',v:fmt(sop_g),u:'g'},
+    {l:'EC Target<br>&nbsp;',      v:ecStr,   u:'mS/cm'},
+    {l:'pH Range<br>&nbsp;',       v:phStr,   u:''}
   ].map(c=>`<div class="mc"><div class="mc-lbl">${c.l}</div><div class="mc-val">${c.v}<span class="mc-unit">${c.u}</span></div></div>`).join('');
 
   const tot=n+p+k;
@@ -364,13 +432,13 @@ function calc(){
   if(activeT1Key!==null&&activeT1Col!==null){
     const crop=T1.find(c=>c.key===activeT1Key);
     const st=getStageByCol(crop,activeT1Col);
-    infoHtml=`<strong>${crop.e} ${crop.name} — ${st.s} (${n}-${p}-${k}):</strong> ${st.info} · ${crop.light}`;
+    infoHtml=`<strong>${crop.e} ${crop.name} — ${st.s} (${n}-${p}-${k} ppm):</strong> ${st.info} · ${crop.light}`;
   } else if(activeT2Idx!==null){
     const r=ALL_T2[activeT2Idx];
     infoHtml=`<strong>${r.e} ${r.v} — NPK ${r.npk}:</strong> EC ${r.ec} mS/cm · pH ${r.ph} · ${r.light}`;
   }
   if(infoHtml){
-    infoHtml+=`<div class="mix-order"><strong>Mixing order:</strong> Masterblend first, dissolve fully → Epsom salt second → Calcium nitrate last.</div>`;
+    infoHtml+=`<div class="mix-order"><strong>Mixing order:</strong> Masterblend first, dissolve fully → Bloom Booster or Sulphate of Potash (whichever this target uses) → Epsom salt → Calcium nitrate last.</div>`;
   }
   document.getElementById('info').innerHTML=infoHtml;
 }
@@ -396,7 +464,7 @@ function buildT2(){
       rows.push({
         e:crop.e,
         v:`${crop.name} (${st.s})`,
-        npk:`${st.npk[0]}-${st.npk[1]}-${st.npk[2]}`,
+        npk:`${st.npk[0]}-${st.npk[1]}-${st.npk[2]} ppm`,
         ec:st.ec,ph:crop.ph,light:crop.light,
         _key:crop.key,_col:col,
         _sort:`${crop.name} ${col}`
